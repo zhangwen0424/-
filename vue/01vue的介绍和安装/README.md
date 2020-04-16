@@ -41,7 +41,9 @@ Vue **不支持** IE8 及以下版本，因为 Vue 使用了 IE8 无法模拟的
 
 3.npm安装（推荐淘宝镜像cnpm）
 
-![npm版本查看](https://github.com/zhangwen0424/web/blob/master/images/npm和cnpm版本查看.png 'npm版本查看')
+![](./images/npm和cnpm版本查看.png, 'https://github.com/zhangwen0424/web/blob/master/vue/images/npm和cnpm版本查看.png')
+
+
 
 若未安装，可到[npm官方](https://www.npmjs.cn/)下载安装npm，安装好后可用之行`npm i cnpm`安装cnpm
 
