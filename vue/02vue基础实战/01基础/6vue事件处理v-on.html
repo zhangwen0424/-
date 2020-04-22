@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue事件处理v-on</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 输出定义的变量 -->
+      <p>{{message}}</p>
+      <!-- v-on指令用于在标签上挂载事件，这里挂载了单击事件，处理函数为reverseMessage -->
+      <button v-on:click="reverseMessage">点击反转字符</button>
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    data: {
+      message: "hello vue!",
+    },
+    // methods定义vue程序的方法
+    methods: {
+      reverseMessage: function () {
+        this.message = this.message.split("").reverse().join("");
+      },
+    },
+  });
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue条件判断语句v-if</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 
+        可见的页面需满足：1在html中，2标签元素可见
+        v-if指令用来控制标签是否显示在html中(不再html中肯定不显示)，true时显示，false隐藏
+        v-show指令标签是否显示在html中(显示在html中不代表可见)，true时显示，false隐藏 
+      -->
+      <ul>
+        <li v-if="a">我在html中，你可以看到我</li>
+        <li v-if="b">你看不到我,我也不在html里面</li>
+        <li v-show="a">我在html中，可以看见我</li>
+        <li v-show="b">我在html中，但是你不可以看见我</li>
+      </ul>
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    data: {
+      a: true,
+      b: false,
+    },
+  });
+</script>

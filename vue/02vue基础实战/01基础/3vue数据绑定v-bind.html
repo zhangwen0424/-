@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue数据绑定v-bind</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <span>显示当前时间:</span>
+      <!-- v-bind是vue的内部指令，作用是将=后面的变量绑定到对应的html标签属性上 -->
+      <!-- 这里是把message这个变量绑定到input标签的value属性上 -->
+      <input type="text" v-bind:value="message" style="width: 400px;" />
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    data: {
+      message: new Date(),
+    },
+  });
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>第一个vue实例</title>
+    <!--1.首先使用script标签引入vue.js库文件，必须引入才能正常使用vue语法 -->
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <!--挂载Vue启动位置，不能挂载到html标签以及body标签上，一个vue实例必须有且只有一个根节点，这是vue的规定.-->
+    <div id="app">
+      <!-- vue声明变量用花括号输出 -->
+      <div>{{message}}</div>
+    </div>
+  </body>
+</html>
+<script>
+  // 引入js文件会暴露一个window.vue构造函数
+  // console.dir(Vue);
+  // vue是一个构造函数，需要实例化才能使用。
+  var vue = new Vue({
+    el: "#app", //vue启动的文档位置，也称为挂载点
+    data: {
+      message: "hello vue!", //设置传给html变量参数，body中花括号进行取值输出使用
+    },
+  });
+  /**
+   vue帮我们实现数据变动视图更新，适用数据量大，数据变化比较快的项目
+   如：电商、论坛、直播、股票、金融、物流......
+   一般企业网站，数据量变化较小，建议适用原生js写代码
+   */
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue循环数组v-for</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <!-- v-for 指令用来循环数组或对象 -->
+        <li v-for="todo in todos">
+          {{todo.text}}
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    data: {
+      todos: [
+        {
+          text: "我",
+        },
+        {
+          text: "爱",
+        },
+        {
+          text: "学",
+        },
+        {
+          text: "习",
+        },
+      ],
+    },
+  });
+</script>

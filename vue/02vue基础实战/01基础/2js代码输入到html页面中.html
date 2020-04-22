@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>js代码输入到html页面中</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
+<script>
+  // 选中id为app的元素
+  var div = document.querySelector("#app");
+  // 将要显示的数据
+  var message = "hello js!";
+  // 改变div元素内容，将message输出到div里面
+  div.innerHTML = message;
+  // 修改要显示的数据，页面不会自动发生改变
+  message = "hello js changeed!";
+  // 适用innerHTML改变页面数据显示
+  div.innerHTML = message;
+</script>
