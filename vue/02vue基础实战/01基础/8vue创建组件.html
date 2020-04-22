@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue创建组件</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <!-- 组件即标签，且为我们自定义的标签 -->
+        <todo-list v-for="item in list" v-bind:todo="item" v-bind:key="item.id"></todo-list>
+      </ul>
+    </div>
+  </body>
+</html>
+<script>
+  /**
+   组件需要先定义后使用
+   组件可以理解为一段html代码模版，可传入数据反复利用
+   组件是一个单独的作用域，有单独的作用域范围，外面的数据无法进入，里面的数据无法出去
+   */
+  Vue.component("todo-list", {
+    // 设置传入组件的属性名称
+    props: ['todo'],
+    // 设置组件渲染模版
+    template: "<li>{{todo.text}}</li>"
+  });
+  // 初始化vue实例
+  var vue = new Vue({
+    el: '#app',
+    data: {
+      list: [
+        {id: 0, text: "草莓"},
+        {id: 1, text: "香蕉"},
+        {id: 2, text: "苹果"}
+      ]
+    }
+  })
+</script>

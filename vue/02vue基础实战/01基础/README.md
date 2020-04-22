@@ -1,5 +1,7 @@
 ## 02 vue基础实战
-[查看项目源代码代码](https://github.com/zhangwen0424/web/tree/master/vue/02vue%E5%9F%BA%E7%A1%80%E5%AE%9E%E6%88%98/01%E5%9F%BA%E7%A1%80)
+
+[查看项目源代码代码](https://github.com/zhangwen0424/web/tree/master/vue/02vue基础实战/01基础)
+
 ### 第一个vue实例
 - 1.使用script标签引入vue.js库文件，必须引入才能正常使用vue语法,引入js文件会暴露一个window.vue构造函数
 - 2.body中规定vue挂载点，不能挂载到html标签以及body标签上，一个vue实例必须有且只有一个根节点  
@@ -164,4 +166,37 @@ v-model作用为将视图中数据绑定到数据中
     },
   });
 </script>    
+```
+
+### vue创建组件
+- 组件其实就是html标签，不过是我们可以自定义的标签，他怎么显示有我们自己定义
+- 组件也可以理解为一段html模版代码，可以根据数据进行渲染，并且可以重复使用
+- 每个组件都有自己独立的作用域范围，外面的数据进不来，组件内的数据出不去
+- 组件需要先定义后使用，传入props数组定义组件接收的数据，template定义组件的模版
+- 组件标签中通过v-bind传入组件的数据，传入props中
+```
+<div id="app">
+  <ul>
+    <!-- 组件即标签，且为我们自定义的标签 -->
+    <todo-list v-for="item in list" v-bind:todo="item" v-bind:key="item.id"></todo-list>
+  </ul>
+</div>
+
+<script>
+  Vue.component("todo-list", {
+    props: ['todo'],
+    template: "<li>{{todo.text}}</li>"
+  });
+  // 初始化vue实例
+  var vue = new Vue({
+    el: '#app',
+    data: {
+      list: [
+        {id: 0, text: "草莓"},
+        {id: 1, text: "香蕉"},
+        {id: 2, text: "苹果"}
+      ]
+    }
+  })
+</script>
 ```
