@@ -295,6 +295,10 @@ v-on是注册一个自定义事件，用$emit调用事件
    - 如果直接调用函数，this对象指向为window，并且不回返回任何对象
     ```
     function Test(name) {
+      // if (!(this instanceof Test)) {
+      //   console.log('没有new这个Test类实例')
+      //   return new Test(name);
+      // }
       this.name = name;
       this.val = 12;
     }
@@ -308,7 +312,8 @@ v-on是注册一个自定义事件，用$emit调用事件
     var obj1 = new Test("xiaoming");
     console.log("obj1.val", obj1.val, obj1.name); //obj1.val 12 xiaoming
     obj1.say(); //I am xiaoming
+
     var people = Test("mornki");
-    people;//undefined
-    window.name;//mornki
+    console.log(people); //undefined
+    console.log(window.name); //mornki
     ```

@@ -29,6 +29,10 @@
    window.name;//mornki
    */
   function Test(name) {
+    // if (!(this instanceof Test)) {
+    //   console.log('没有new这个Test类实例')
+    //   return new Test(name);
+    // }
     this.name = name;
     this.val = 12;
   }
@@ -42,4 +46,8 @@
   var obj1 = new Test("xiaoming");
   console.log("obj1.val", obj1.val, obj1.name); //obj1.val 12 xiaoming
   obj1.say(); //I am xiaoming
+
+  var people = Test("mornki");
+  console.log(people); //undefined
+  console.log(window.name); //mornki
 </script>
