@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue实例</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>a:{{a}}</p>
+      <p>b:{{b}}</p>
+    </div>
+  </body>
+</html>
+<script>
+  var data = {
+    a: 1,
+    b: null,
+  };
+  var vue = new Vue({
+    el: "#app",
+    data: data, //只有在data挂载的数据才是双向绑定（视图跟随数据变化），其他数据无法做到
+    methods: {
+      say: function () {
+        console.log("hi!", this.a);
+      },
+    },
+  });
+  // 实例化vue后可以直接访问data里面的数据
+  console.log("vue.a:", vue.a); //1
+  data.a = 3;
+  console.log("data.a:", vue.a); //3
+  vue.a = 3;
+  console.log("vue.a:", vue.a); //3
+  vue.b = "hello"; //不可以通过实例添加一个不存在的属性，如需添加即使没有值也要在data中声明变量，否则无法在视图中访问
+  vue.c = "hello"; //不可以通过实例添加一个不存在的属性，如需添加即使没有值也要在data中声明变量，否则无法在视图中访问
+  vue.say(); //3
+</script>

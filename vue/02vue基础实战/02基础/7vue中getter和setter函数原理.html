@@ -1,0 +1,64 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue中getter和setter函数原理</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+  Object.defineProperty(obj, prop, desc)
+  直接在一个对象上定义一个新属性，或者修改一个已经存在的属性
+  obj 需要定义属性的当前对象
+  prop 当前需要定义的属性名
+  desc 属性描述符
+  属性描述符有两种形式，且不能混合使用，分别为数据描述符，存取描述符
+  1.数据描述符 --特有的两个属性（value,writable）
+  2.存取描述符 --是由一对 getter、setter 函数功能来描述的属性，进行更精准的控制对象属性
+  */
+
+  console.log("数据描述符......");
+  var obj0 = {
+    num: 1, //数量
+    price: 10, //单价
+  };
+  Object.defineProperty(obj0, "total", {
+    value: 1000,
+    writable: true, //设置是否可写,默认不可写
+  });
+  console.log("total:", obj0.total); //total: 1000
+  obj0.total = 2000;
+  console.log("total:", obj0.total); //total: 2000
+  console.log("obj0:", obj0); //obj0: {num: 1, price: 10, total: 2000}
+
+  console.log("存取描述符......");
+  var obj = {
+    num: 1, //数量
+    price: 10, //单价
+  };
+  Object.defineProperty(obj, "total", {
+    // 访问total时调用get函数
+    get: function () {
+      console.log("get...");
+      return this.num * this.price;
+    },
+    // 修改total时调用set函数
+    set: function (val) {
+      console.log("set...");
+    },
+  });
+  obj.num = 5;
+  console.log("total:", obj.total);
+  obj.total = 100;
+  console.log("total:", obj.total);
+  console.log("obj:", obj);
+  /*
+  get...
+  total: 50
+  set...
+  get...
+  total: 50
+  obj: {num: 5, price: 10}
+  */
+</script>

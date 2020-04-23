@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue实例上的方法$on</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>message: {{message}}</p>
+      <button v-on:click="test">点击修改数据</button>
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    data: { message: "hello!" },
+    methods: {
+      test: function () {
+        this.$emit("test", "hi!");
+      },
+    },
+  });
+  // 注册一个自定义事件，事件名字为test
+  vue.$on("test", function (msg) {
+    this.message = msg;
+  });
+</script>

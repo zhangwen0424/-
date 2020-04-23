@@ -1,0 +1,30 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue计算属性computed</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>原来的信息：{{message}}</p>
+      <p>计算后的信息：{{reverseMessage}}</p>
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    data: { message: "hello" },
+    /**
+     计算属性依赖于其他属性，是通过一系列复杂运算得出的结果
+     他会直接调用getter函数，如果参与计算的其他属性发生变化，计算属性会重新计算
+     属于数据与数据之间的绑定关系
+     */
+    computed: {
+      reverseMessage: function () {
+        return this.message.split("").reverse().join("");
+      },
+    },
+  });
+</script>

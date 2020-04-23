@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js构造函数</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /**
+   用 new 关键字来调用的函数，称为构造函数,构造函数首字母一般大写
+   函数体内部的 this 指向该内存,构造函数执行过程的最后一步是默认返回 this 
+   每当创建一个实例的时候，就会创建一个新的内存空间
+   使用new调用构造函数，执行以下几步：
+   1.创建一个this变量，该变量指向一个空对象
+   2.该对象继承函数的原型属性和方法加入this引用的对象中
+   3.返回this对象
+   function Test(name){
+     var this = {};
+     this.name = name;
+     this.say = function(){
+       return "I am "+name;
+     }
+     return this;
+   }
+   如果直接调用函数，this对象指向为window，并且不回返回任何对象
+   var people = Test("mornki");
+   people;//undefined
+   window.name;//mornki
+   */
+  function Test(name) {
+    this.name = name;
+    this.val = 12;
+  }
+  Test.prototype.say = function () {
+    console.log("I am " + this.name);
+  };
+
+  var obj = new Test("mornki");
+  console.log("obj.val", obj.val, obj.name); //obj.val 12 mornki
+  obj.say(); //I am mornki
+  var obj1 = new Test("xiaoming");
+  console.log("obj1.val", obj1.val, obj1.name); //obj1.val 12 xiaoming
+  obj1.say(); //I am xiaoming
+</script>

@@ -1,0 +1,51 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue的生命周期</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{message}}</p>
+      <button v-on:click="message='hello vue!'">点击我更新数据</button>
+      <button v-on:click="destroy">点击我销毁vue实例</button>
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    // vue生命周期函数
+    beforeCreate() {
+      console.log("开始创建前。。。");
+    },
+    created() {
+      console.log("创建完成了。。。");
+    },
+    beforeMount() {
+      console.log("开始挂载了。。。");
+    },
+    mounted() {
+      console.log("挂载完成了。。。");
+    },
+    beforeUpdate() {
+      console.log("开始更新了。。。");
+    },
+    updated() {
+      console.log("更新完成了。。。");
+    },
+    beforeDestroy() {
+      console.log("开始销毁了。。。");
+    },
+    destroyed() {
+      console.log("销毁结束。。。");
+    },
+    data: { message: "测试数据" },
+    methods: {
+      destroy: function () {
+        vue.$destroy();
+      },
+    },
+  });
+</script>

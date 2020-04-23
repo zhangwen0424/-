@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue指令参数、修饰和缩写</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 冒号后面是指定的参数，进一步说明指令的类型或其他信息 -->
+      <p v-on:mouseover="console">鼠标移入。。。</p>
+      <p v-on:id="'abc'"></p>
+      <a v-on:click.prevent="console" href="https://github.com/zhangwen0424"
+        >点击我阻止默认行为</a
+      >
+      <!-- v-on指令的缩写 -->
+      <p @mouseover="console">鼠标移入。。。</p>
+      <!-- v-bind指令的缩写 -->
+      <p :id="'abc'"></p>
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    data: {},
+    methods: {
+      console: function () {
+        console.log(new Date());
+      },
+    },
+  });
+</script>

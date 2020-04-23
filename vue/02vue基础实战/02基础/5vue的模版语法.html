@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue的模版语法</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-once阻止标签上的双向绑定,只取初始值 -->
+      <span v-once>{{msg}}</span><br />
+      <!-- 以text的格式输出 -->
+      <span>{{msg}}</span><br />
+      <span v-bind:id="msg" v-text="msg"></span><br />
+      <!-- 以html的格式输出 -->
+      <span v-bind:id="msg" v-html="msg"></span><br />
+      <!-- 以表达式格式输出 -->
+      <span>{{num+1}}</span><br />
+      <span>{{bool?true:false}}</span><br>
+      <!-- 不支持js语句 -->
+      <!-- <span>{{console.log(num)}}</span> -->
+      <button v-on:click="msg='hello'">修改数据</button>
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    data: {
+      msg: "<li>hello vue</li>",
+      num: 10,
+      bool: false,
+    },
+  });
+</script>
