@@ -14,6 +14,16 @@
   </body>
 </html>
 <script>
+  /**
+    beforeCreate：实例组件刚创建，元素DOM和数据都还没有初始化。
+    created：数据data已经初始化完成，方法也已经可以调用，但是DOM未渲染。可以在这里请求数据资源。
+    beforeMount：DOM未完成挂载，数据也初始化完成，但是数据的双向绑定还是显示{{}}，Vue的Virtual DOM（虚拟Dom）技术，先占住了一个坑。
+    mounted：数据和DOM都完成挂载，在上一个周期占位的数据把值给渲染进去。可以在这里执行初始化需要操作DOM的方法。
+    beforeUpdate：数据改变都会触发，数据不变不触发，数据更新之前，页面数据还是原来的数据
+    updated：只要是页面数据改变了都会触发，数据更新完毕，页面的数据是更新完成的。beforeUpdate和updated要谨慎使用，因为页面更新数据的时候都会触发，在这里操作数据很影响性能和容易死循环。
+    beforeDestroy：这个周期是在组件销毁之前执行，在我项目开发中，觉得这个其实有点类似路由钩子beforeRouterLeave,都是在路由离开的时候执行，只不过beforeDestroy无法阻止路由跳转，但是可以做一些路由离开的时候操作，因为这个周期里面还可以使用data和method。比如一个倒计时组件，如果在路由跳转的时候没有清除，这个定时器还是在的，这时候就可以在这个里面清除计时器。
+    Destroyed：说实在的，我还真的不知道这个周期跟beforeDestroy有什么区别，我在这个周期里面调用data的数据和methods的方法都能调用，所以我会觉得跟beforeDestroy是一样的
+   */
   var vue = new Vue({
     el: "#app",
     // vue生命周期函数
